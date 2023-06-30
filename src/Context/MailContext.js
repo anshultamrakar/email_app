@@ -6,7 +6,7 @@ export const  MailContext = createContext()
 
 
 const MailProvider = ({children}) => {
-   const [state , dispatch] = useReducer(mailReducer,  {myMails : mails, starred : false ,  unreads : false,   trashEmail : [] , spamEmails : []})
+   const [state , dispatch] = useReducer(mailReducer,  {myMails : mails, trashEmail : [] , spamEmails : []})
   return(
     <MailContext.Provider value = {{state , dispatch}}>
       {children}

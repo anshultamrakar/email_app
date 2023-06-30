@@ -3,12 +3,12 @@ import { useContext } from 'react'
 import { MailContext } from '../Context/MailContext'
 
 const Spam = () => {
-  const {spamEmails} = useContext(MailContext)
+  const {state} = useContext(MailContext)
   
   return (
     <div>
      <ul className='inboxlist'>
-      {spamEmails.map(mail => (
+      {state.spamEmails.map(mail => (
         <li  className='listEmail' key = {mail.mId}>
            <h3>Subject : {mail.subject}</h3>
             <br/>
