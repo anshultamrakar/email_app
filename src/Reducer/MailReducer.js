@@ -1,10 +1,15 @@
- export const mailReducer = (state , action) => {
+ export const mailReducer = (state , action ,e ) => {
   switch(action.type){
     case  "DELETE_EMAIL":
       return {...state , myMails : state.myMails.filter(email => email.mId !== action.payload.mId) , trashEmail : [...state.trashEmail , action.payload ]}
       case "MARK_AS_READ" :
-        return {...state , myMails : state.myMails.map(email => email.mId === action.payload.mId ? {...email ,unread : !email.unread } : email )}
+        return {...state , myMails : state.myMails.map(email => email.mId === action.payload.mId ? {...email , unread : !email.unread } : email )}
       case  "REPORT_SPAM" : 
      return  {...state , spamEmails : [...state.spamEmails , action.payload]}
-      }
-} 
+     case "STARED_EMAIL": 
+     return {...state , myMails : state.myMails.map(email => email.mId === action.payload.mId  ? {...email , isStarred : !email.isStarred} : email)}
+      case "CHECK_UNREAD" :
+        return {...state , unread : state.myMails.filter(email => email.unread) }
+  
+    }
+}   

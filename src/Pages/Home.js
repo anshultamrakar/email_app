@@ -6,15 +6,24 @@ const Home = () => {
     const {state , dispatch} = useContext(MailContext)
   return (
     <div className='Home'>
-     <h4>Unread : {state.myMails.filter(mail => mail.unread === true).length}</h4> 
+          <form>
+          <fieldset className='filters'>
+          <legend>Filters</legend>
+          <input id = "unread" type = "checkbox" value = {state.unread} onChange={(e) => dispatch({type : "CHECK_UNREAD" , payload : e.target.value })} />
+          <label htmlFor='unread'>Show unread emails</label>
+          <input id = "starred" type = "checkbox" value = {state.starred} onChange={(e) => dispatch({type : "STARRED_EMAIL" , payload : e.target.value}) }/>
+          <label htmlFor='starred'>Show starred emails</label>
+          </fieldset>
+          </form>
+      <h4>Unread : {state.myMails.filter(email => email.unread).length}</h4>
         <br/>
         <ul className='inboxlist'>
         {state.myMails.map(mail => (
          <li className='listEmail' key = {mail.mId}>
             <div className='starBtn'>
             <h3>Subject : {mail.subject}</h3>
-            <button>Star</button>
-            </div>
+            <button onClick={() => dispatch({type : "STARED_EMAIL" , payload : mail})}>{!mail.isStarred ? "Star" : "Unstar"}</button>
+            </div> 
             <br/>
             <p>{mail.content}</p>
             <div className = "mailButtons">
@@ -25,7 +34,6 @@ const Home = () => {
          </li>
         ))}
         </ul>
-       
     </div>
   )
 }

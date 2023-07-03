@@ -1,7 +1,7 @@
 export const mails = [
     {
       mId: 'guid-1',
-      unread: false,
+      unread: true ,
       isStarred: false,
       subject: 'Training Program',
       content:
@@ -18,7 +18,7 @@ export const mails = [
     {
       mId: 'guid-3',
       unread: true,
-      isStarred: true,
+      isStarred: false,
       subject: 'Pre Approved Loan',
       content:
         'Congratulations ! <u>Credit card<u> is being shipped to you today!',
