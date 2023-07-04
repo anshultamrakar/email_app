@@ -9,7 +9,7 @@ const Home = () => {
           <form>
           <fieldset className='filters'>
           <legend>Filters</legend>
-          <input id = "unread" type = "checkbox" checked = {state.unread} onChange={(e) => dispatch({type : "CHECK_UNREAD", payload : e.target.checked})} />
+          <input id = "unread" type = "checkbox"   checked = {state.unread} onChange={(e) => dispatch({type : "CHANGE_HANDLER", payload : e.target.checked})} />
           <label htmlFor='unread'>Show unread emails</label>
           </fieldset>
           </form>
