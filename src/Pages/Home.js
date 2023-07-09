@@ -9,8 +9,10 @@ const Home = () => {
           <form>
           <fieldset className='filters'>
           <legend>Filters</legend>
-          <input id = "unread" type = "checkbox"   checked = {state.unread} onChange={(e) => dispatch({type : "CHANGE_HANDLER", payload : e.target.checked})} />
+          <input id = "unread" type = "checkbox"   checked = {state.unread} onChange={(e) => dispatch({type : "CHECKED_UNREAD", payload : e.target.checked})} />
           <label htmlFor='unread'>Show unread emails</label>
+          <input id = "starred" type = "checkbox"   checked = {state.starred} onChange={(e) => dispatch({type : "CHECKED_STARRED", payload : e.target.checked})} />
+          <label htmlFor='starred'>Show starred mails </label>
           </fieldset>
           </form>
       <h4>Unread : {state.myMails.filter(email => email.unread).length}</h4>

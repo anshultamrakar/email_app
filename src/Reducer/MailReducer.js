@@ -1,5 +1,7 @@
- export const mailReducer = (state , action ,e ) => {
-  console.log(state.unread)
+import { mails } from "../api/fakeFetch"
+
+ export const mailReducer = (state , action  ) => {
+  console.log(state.myMails)
   switch(action.type){
     case  "DELETE_EMAIL":
       return {...state , myMails : state.myMails.filter(email => email.mId !== action.payload.mId) , trashEmail : [...state.trashEmail , action.payload ]}
@@ -9,7 +11,9 @@
      return  {...state , spamEmails : [...state.spamEmails , action.payload]}
      case "STARED_EMAIL": 
      return {...state , myMails : state.myMails.map(email => email.mId === action.payload.mId  ? {...email , isStarred : !email.isStarred} : email)}
-      case "CHANGE_HANDLER" :
-        return {...state , unread : action.payload ,  myMails : state.myMails.filter(email => email.unread !== action.payload)}
+      case "CHECKED_UNREAD" :
+        return {...state ,unread : action.payload , myMails : action.payload ? state.myMails.filter(email => email.unread) : mails }
+        case "CHECKED_STARRED" : 
+        return {...state , starred : action.payload , myMails : action.payload ? state.myMails.filter(email => email.isStarred) : mails}
     }
 }   

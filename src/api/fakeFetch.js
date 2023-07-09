@@ -9,7 +9,7 @@ export const mails = [
     },
     {
       mId: 'guid-2',
-      unread: true,
+      unread: false,
       isStarred: false,
       subject: 'Empower your future',
       content:
